@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+*.class 
+*.html 
+*.xml
+*.iml
+*.name
+=======
+*.class
+*.xml
+*.iml
+target
+*.nane
+*html
+>>>>>>> 5361ddf1d5015fc56caedf0f42c7e8a974267b6f
