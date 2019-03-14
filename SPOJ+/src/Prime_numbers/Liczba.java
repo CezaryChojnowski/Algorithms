@@ -1,3 +1,5 @@
+package Prime_numbers;
+
 class Liczba {
     int a;
     int ileDzielnikow;

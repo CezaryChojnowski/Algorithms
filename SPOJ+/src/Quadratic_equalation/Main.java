@@ -1,4 +1,4 @@
-package com.company;
+package Quadratic_equalation;
 
 import java.util.Scanner;
 

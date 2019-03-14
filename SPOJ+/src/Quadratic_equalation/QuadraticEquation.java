@@ -1,4 +1,4 @@
-package com.company;
+package Quadratic_equalation;
 import static java.lang.Math.*;
 
 public class QuadraticEquation {

@@ -1,5 +1,6 @@
-import java.util.Scanner;
+package Exponentiation;
 
+import java.util.Scanner;
 import static java.lang.Math.pow;
 
 public class Main {
