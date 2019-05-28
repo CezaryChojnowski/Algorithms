@@ -1,6 +1,7 @@
 package easy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Solution {
@@ -120,6 +121,30 @@ public class Solution {
         while (i < nums.length) {
             nums[i++] = 0;
         }
+    }
+//###########################################################################################################################
+//    Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+//
+//            Example 1:
+//
+//    Input: [3,0,1]
+//    Output: 2
+//    Example 2:
+//
+//    Input: [9,6,4,2,3,5,7,0,1]
+//    Output: 8
+//###########################################################################################################################
+    public static int missingNumber(int[] nums) {
+        int a1=1;
+        int n=nums.length;
+        int an=nums.length;
+        //Suma wyrazów ciągu geometrycznego
+        int expectedSum = n*(an + a1)/2;
+        int sum = 0;
+        for(int i=0; i<n; i++){
+            sum=sum+nums[i];
+        }
+        return expectedSum - sum;
     }
 
 }
