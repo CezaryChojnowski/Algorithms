@@ -6,19 +6,18 @@ import java.util.List;
 public class Solution {
     public static int arrayPairSum(int[] nums) {
         int n2 = nums.length;
-        int n = n2/2;
-        int sum=0;
+        int n = n2 / 2;
+        int sum = 0;
         int k;
-        for(int i=0; i<n; i++){
-            k=1;
-            if(n2==2){
-                k=0;
+        for (int i = 0; i < n; i++) {
+            k = 1;
+            if (n2 == 2) {
+                k = 0;
             }
-            if(nums[i]<=nums[n-i+k]){
-                sum=sum+nums[i];
-            }
-            else{
-                sum=sum+nums[n-i+k];
+            if (nums[i] <= nums[n - i + k]) {
+                sum = sum + nums[i];
+            } else {
+                sum = sum + nums[n - i + k];
             }
         }
         return sum;
@@ -28,8 +27,8 @@ public class Solution {
         int len = s.length;
         char[] output = new char[len];
 
-        for(int i=0; i<len; i++){
-            output[i]=s[len-i-1];
+        for (int i = 0; i < len; i++) {
+            output[i] = s[len - i - 1];
         }
         System.out.println(output);
     }
@@ -56,18 +55,19 @@ public class Solution {
         String temp;
         int intTemp;
         int count;
-        for(int i = left; i<=right; i++){
+        for (int i = left; i <= right; i++) {
             count = 0;
-            temp = "" + i;;
-            for(int j=0; j<temp.length(); j++){
+            temp = "" + i;
+            ;
+            for (int j = 0; j < temp.length(); j++) {
                 intTemp = Character.getNumericValue(temp.charAt(j));
-                if(intTemp==0){
+                if (intTemp == 0) {
                     continue;
                 }
-                if(i%intTemp==0){
+                if (i % intTemp == 0) {
                     count++;
                 }
-                if(count==temp.length()){
+                if (count == temp.length()) {
                     result.add(i);
                 }
             }
@@ -77,20 +77,49 @@ public class Solution {
 
     public static int singleNumber(int[] nums) {
         int len = nums.length;
-        int count=0;
+        int count = 0;
         int temp;
-        for(int i=0; i<len; i++){
-            count=0;
-            temp=nums[i];
-            for(int j=0; j<len; j++){
-                if(temp==nums[j]){
+        for (int i = 0; i < len; i++) {
+            count = 0;
+            temp = nums[i];
+            for (int j = 0; j < len; j++) {
+                if (temp == nums[j]) {
                     count++;
                 }
             }
-            if(count==1){
+            if (count == 1) {
                 return temp;
             }
         }
         return 0;
     }
+
+    //####################################################################################################################################
+//Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+//
+//    Example:
+//
+//    Input: [0,1,0,3,12]
+//    Output: [1,3,12,0,0]
+//    Note:
+//
+//    You must do this in-place without making a copy of the array.
+//    Minimize the total number of operations.
+//####################################################################################################################################
+    public void moveZeroes(int[] nums) {
+        int i = 0;
+        int j = 0;
+
+        while (j < nums.length) {
+            if (nums[j] != 0) {
+                nums[i++] = nums[j];
+            }
+            j++;
+        }
+
+        while (i < nums.length) {
+            nums[i++] = 0;
+        }
+    }
+
 }
