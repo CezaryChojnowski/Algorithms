@@ -186,4 +186,43 @@ public class Solution {
         result.add(new ArrayList<Integer>());
         return result;
     }
+
+    //###########################################################################################
+//    Implement pow(x, n), which calculates x raised to the power n (xn).
+//
+//    Example 1:
+//
+//    Input: 2.00000, 10
+//    Output: 1024.00000
+//    Example 2:
+//
+//    Input: 2.10000, 3
+//    Output: 9.26100
+//    Example 3:
+//
+//    Input: 2.00000, -2
+//    Output: 0.25000
+//    Explanation: 2-2 = 1/22 = 1/4 = 0.25
+    //###########################################################################################
+    public static double myPow(double x, int n) {
+        double result=1;
+        if(n>0) {
+            for (int i = 0; i < n; i++) {
+                result = result * x;
+            }
+            return result;
+        }
+        else if(n<0){
+            n=n*(-1);
+            x=1/x;
+            for(int i=0; i<n; i++){
+                result = result * x;
+            }
+            return result;
+        }
+        else if(n==1){
+            return x;
+        }
+        return 1;
+    }
 }
