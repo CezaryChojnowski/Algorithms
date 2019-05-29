@@ -1,8 +1,6 @@
 package easy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 //###########################################################################################################################################
 //Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A.
@@ -211,6 +209,38 @@ public class Solution {
             temp = String.valueOf(sum);
         }
     return result;
+    }
+    //########################################################################################################
+//Given an array A of positive lengths, return the largest perimeter of a triangle with non-zero area, formed from 3 of these lengths.
+//
+//    If it is impossible to form any triangle of non-zero area, return 0.
+//
+//
+//
+//    Example 1:
+//
+//    Input: [2,1,2]
+//    Output: 5
+//    Example 2:
+//
+//    Input: [1,2,1]
+//    Output: 0
+//    Example 3:
+//
+//    Input: [3,2,3,4]
+//    Output: 10
+//    Example 4:
+//
+//    Input: [3,6,2,3]
+//    Output: 8
+//########################################################################################################
+    public static int largestPerimeter(int[] A) {
+        int n = A.length;
+        Arrays.sort(A);
+        for (int k = n - 3; k >= 0; --k)
+            if (A[k] + A[k+1] > A[k+2])
+                return A[k] + A[k+1] + A[k+2];
+        return 0;
     }
 
 }
