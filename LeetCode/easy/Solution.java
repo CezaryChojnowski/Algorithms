@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+//###########################################################################################################################################
+//Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A.
+//
+//        You may return any answer array that satisfies this condition.
+//
+//
+//
+//        Example 1:
+//
+//        Input: [3,1,2,4]
+//        Output: [2,4,3,1]
+//        The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+//###########################################################################################################################################
 public class Solution {
     public static int arrayPairSum(int[] nums) {
         int n2 = nums.length;
@@ -76,6 +89,22 @@ public class Solution {
         return result;
     }
 
+//######################################################################################################################
+//    Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+//
+//    Note:
+//
+//    Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+//
+//    Example 1:
+//
+//    Input: [2,2,1]
+//    Output: 1
+//    Example 2:
+//
+//    Input: [4,1,2,1,2]
+//    Output: 4
+//######################################################################################################################
     public static int singleNumber(int[] nums) {
         int len = nums.length;
         int count = 0;
@@ -145,6 +174,43 @@ public class Solution {
             sum=sum+nums[i];
         }
         return expectedSum - sum;
+    }
+
+//############################################################################################################################################################
+//Write an algorithm to determine if a number is "happy".
+//
+//    A happy number is a number defined by the following process: Starting with any positive integer,
+//    replace the number by the sum of the squares of its digits, and repeat the process until the number equals
+//    1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+//
+//            Example:
+//
+//    Input: 19
+//    Output: true
+//    Explanation:
+//            1^2 + 9^2 = 82
+//            8^2 + 2^2 = 68
+//            6^2 + 8^2 = 100
+//            1^2 + 0^2 + 0^2 = 1
+//############################################################################################################################################################
+    public static boolean isHappy(int n) {
+        boolean result = false;
+        String temp = String.valueOf(n);
+        int len = temp.length();
+        int sum;
+        for(int i=0; i<len; i++){
+            sum=0;
+            int[] tempArray = new int[len];
+            tempArray[i]=Integer.valueOf(temp.charAt(i));
+            for(int j=0; j<len; j++){
+                sum=sum+tempArray[j]^2;
+            }
+            if(sum==1){
+                return true;
+            }
+            temp = String.valueOf(sum);
+        }
+    return result;
     }
 
 }
