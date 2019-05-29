@@ -1,5 +1,6 @@
 package medium;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Solution {
@@ -158,25 +159,31 @@ public class Solution {
 //            []
 //            ]
 //###########################################################################################
-    public static List<List<Integer>> subsets(int[] nums) { //Dokończyć#################################
-        List<Integer> emptySubset = new ArrayList<Integer>();
+    public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         int n = nums.length;
-        if (nums == null || nums.length == 0) {
+        if ( n == 0 || nums == null) {
             return result;
         }
-        //Pusty podzbiór
-        result.add(emptySubset);
-//        //Podzbiór ze wszystkich elementów
-//        finalResultList.add(subset);
 
-        //Jednoelementowe zbiory
-//        for(int i=0; i<n; i++){
-//            subset.clear();
-//            subset.add(nums[i]);
-//            finalResultList.add(subset);
-//        }
+        for(int i=0; i<n; i++){
+            List<List<Integer>> tempResult = new ArrayList<List<Integer>>();
 
+            for (List<Integer> subset : result) {
+                tempResult.add(new ArrayList<Integer>(subset));
+            }
+
+            for(List<Integer> list : tempResult){
+                list.add(nums[i]);
+            }
+
+            List<Integer> single = new ArrayList<Integer>();
+            single.add(nums[i]);
+            tempResult.add(single);
+
+            result.addAll(tempResult);
+        }
+        result.add(new ArrayList<Integer>());
         return result;
     }
 }
