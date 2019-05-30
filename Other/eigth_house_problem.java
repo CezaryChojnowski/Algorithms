@@ -62,5 +62,7 @@ public class eigth_house_problem {
 //            System.out.print(array[i]);
 //        }
 //    }
+
+
 }
 
