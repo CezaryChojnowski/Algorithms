@@ -292,6 +292,33 @@ public static List<String> fizzBuzz(int n) {
     }
     return result;
 }
-
+//########################################
+//    Reverse a singly linked list.
+//
+//            Example:
+//
+//    Input: 1->2->3->4->5->NULL
+//    Output: 5->4->3->2->1->NULL
+//########################################
+     public class ListNode {
+         int val;
+         ListNode next;
+         ListNode(int x) {
+             val = x;
+         }
+     }
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode result = head;
+        while (head.next != null) {
+            ListNode active = head.next;
+            head.next = head.next.next;
+            active.next = result;
+            result = active;
+        }
+        return result;
+    }
 
 }
