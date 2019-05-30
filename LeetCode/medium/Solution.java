@@ -1,6 +1,5 @@
 package medium;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Solution {
@@ -101,7 +100,6 @@ public class Solution {
                 countcheckZero++;
             }
         }
-        System.out.println(countcheckZero);
 
         for(int i=0; i<len; i++){
             if(nums[i]==0){
@@ -268,7 +266,7 @@ public class Solution {
     //            [16, 7,10,11]
     //            ]
     //##############################################################################################################################################################
-    public static void rotate(int[][] matrix) {
+    public static void rotate(int[][] matrix) {//Dokończyć
         int n = matrix.length;
 //        int[] tempRow = new int[n];
 //        int[] tempColumn = new int[n];
@@ -279,5 +277,60 @@ public class Solution {
 //                tempColumn[j]=matrix[j][n-i];
             }
         }
+    }
+//#############################################################################
+//    Given a non-empty array of integers, return the k most frequent elements.
+//
+//            Example 1:
+//
+//    Input: nums = [1,1,1,2,2,3], k = 2
+//    Output: [1,2]
+//    Example 2:
+//
+//    Input: nums = [1], k = 1
+//    Output: [1]
+// #############################################################################
+    public static List<Integer> topKFrequent(int[] nums, int k) {
+        int len = nums.length;
+        int count = 0;
+        int tempNumber;
+        int key;
+        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> temp = new ArrayList<Integer>();
+        List<Integer> sortListValue = new ArrayList<Integer>();
+        Map<Integer, Integer> tempHash = new HashMap<>();
+        for(Integer i: nums){
+            temp.add(i);
+        }
+        for(int i=0; i<len; i++){
+            count = 0;
+            tempNumber = temp.get(i);
+            for(int j=0; j<len; j++){
+                if(tempNumber==temp.get(j)){
+                    count++;
+                }
+            };
+            tempHash.put(temp.get(i), count);
+        }
+        for(Map.Entry<Integer, Integer> entry : tempHash.entrySet()) {
+            sortListValue.add(entry.getValue());
+        }
+        Collections.sort(sortListValue);
+        Collections.reverse(sortListValue);
+
+        for(int j=0; j<k; j++) {
+            key = (Integer) getKeyFromValue(tempHash, sortListValue.get(j));
+            result.add(key);
+        }
+        return result;
+    }
+
+    public static Object getKeyFromValue(Map map, Object value) {
+        for (Object o : map.keySet()) {
+            if (map.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
     }
 }
