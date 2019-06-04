@@ -1,5 +1,7 @@
 package medium;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.util.*;
 
 public class Solution {
@@ -456,5 +458,36 @@ public class Solution {
             return "";
         }
 
+    }
+
+//################################################################################################
+//    Given an unsorted array of integers, find the length of longest increasing subsequence.
+//
+//    Example:
+//
+//    Input: [10,9,2,5,3,7,101,18]
+//    Output: 4
+//    Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+// ################################################################################################
+
+    public static int lengthOfLIS(int[] nums) {
+        int len = nums.length;
+        if (len == 0) {
+            return 0;
+        }
+        int[] temp = new int[len];
+        temp[0] = 1;
+        int max = 1;
+        for (int i = 1; i < len; i++) {
+            int maxvalue = 0;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    maxvalue = Math.max(maxvalue, temp[j]);
+                }
+            }
+            temp[i] = maxvalue + 1;
+            max = Math.max(max, temp[i]);
+        }
+        return max;
     }
 }
