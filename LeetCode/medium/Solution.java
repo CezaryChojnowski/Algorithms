@@ -490,4 +490,81 @@ public class Solution {
         }
         return max;
     }
+
+//######################################################################################################################
+//    Given a positive integer n, break it into the sum of at least two positive integers and maximize the product
+//    of those integers. Return the maximum product you can get.
+//
+//            Example 1:
+//
+//    Input: 2
+//    Output: 1
+//    Explanation: 2 = 1 + 1, 1 × 1 = 1.
+//    Example 2:
+//
+//    Input: 10
+//    Output: 36
+//    Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
+//######################################################################################################################
+    public static int integerBreak(int n) {
+        int[] tempArray = new int[n+1];
+        int temp;
+
+        for(int i=1; i<n; i++){
+            for(int j=1; j<i+1; j++){
+                if(i+j<=n){
+                    temp = Math.max(tempArray[i],i)*Math.max(tempArray[j],j);
+                    tempArray[i+j]=Math.max(temp, tempArray[i+j]);
+                }
+            }
+        }
+        return tempArray[n];
+    }
+//#######################################################################################################################
+//    In a 2 dimensional array grid, each value grid[i][j] represents the height of a building located there.
+//    We are allowed to increase the height of any number of buildings, by any amount (the amounts can be
+//    different for different buildings). Height 0 is considered to be a building as well.
+//
+//    At the end, the "skyline" when viewed from all four directions of the grid, i.e. top, bottom, left,
+//    and right, must be the same as the skyline of the original grid. A city's skyline is the outer contour of
+//    the rectangles formed by all the buildings when viewed from a distance. See the following example.
+//
+//    What is the maximum total sum that the height of the buildings can be increased?
+//
+//    Example:
+//    Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+//    Output: 35
+//    Explanation:
+//    The grid is:
+//            [ [3, 0, 8, 4],
+//            [2, 4, 5, 7],
+//            [9, 2, 6, 3],
+//            [0, 3, 1, 0] ]
+//
+//    The skyline viewed from top or bottom is: [9, 4, 8, 7]
+//    The skyline viewed from left or right is: [8, 7, 9, 3]
+//
+//    The grid after increasing the height of buildings without affecting skylines is:
+//
+//    gridNew = [ [8, 4, 8, 7],
+//            [7, 4, 7, 7],
+//            [9, 4, 8, 7],
+//            [3, 3, 3, 3] ]
+//#######################################################################################################################
+
+    public int maxIncreaseKeepingSkyline(int[][] grid) {
+        int len = grid.length;
+        int[] rMax = new int[len];
+        int[] cMax = new int[len];
+        for (int i = 0; i < len; ++i)
+            for (int j = 0; j < len; ++j) {
+                rMax[i] = Math.max(rMax[i], grid[i][j]);
+                cMax[j] = Math.max(cMax[j], grid[i][j]);
+            }
+        int result = 0;
+        for (int i = 0; i < len; ++i)
+            for (int j = 0; j < len; ++j)
+                result = result + Math.min(rMax[i], cMax[j]) - grid[i][j];
+        return result;
+    }
 }
